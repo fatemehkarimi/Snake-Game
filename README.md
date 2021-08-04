@@ -1,0 +1,2 @@
+# Tiny Projects For Tiny Kids
+In order to improve my software design skills, I decided to do as many tiny projects as I can. The name of the project repository is adapted from "good stories for good children" a book by [Mehdi Azar Yazdi](https://en.wikipedia.org/wiki/Mehdi_Azar_Yazdi)
