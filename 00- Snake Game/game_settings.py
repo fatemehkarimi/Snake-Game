@@ -14,5 +14,10 @@ class GameSettings:
     square_color1 = (178, 142, 154)
     square_color2 = (76, 70, 114)
 
-    #Food settings
+    # Food settings
     food_size = (int(square_size[0]), int(square_size[1]))
+
+    # Snake settings
+    snake_initial_length = int(board_size / 3)
+    snake_speed = 1
+    snake_color = (229, 162, 133)
