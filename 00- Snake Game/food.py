@@ -30,7 +30,7 @@ class Food:
 
     def initiate_food(self, board):
         self.current_food = random.randint(0, len(self.food_icons) - 1)
-        self.food_position = self.next_location(board)
+        self.position = self.next_location(board)
 
     def draw(self, surface):
-        surface.blit(self.food_icons[self.current_food], self.food_position)
+        surface.blit(self.food_icons[self.current_food], self.position)

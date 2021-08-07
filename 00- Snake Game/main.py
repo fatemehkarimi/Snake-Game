@@ -23,8 +23,9 @@ def main():
     pygame.display.flip()
 
     running = True
+    extended = False
     while running:
-        pygame.time.wait(1000)
+        pygame.time.wait(300)
         snake.move(screen)
         board.draw(screen)
         snake.draw(screen)
@@ -33,6 +34,15 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT, pygame.K_DOWN]:
+                    snake.handle_key(event.key)
+
+        snake_head = snake.get_head_postion()
+        if snake_head == food.current_location:
+            snake.extend()
+            snake.draw(screen)
+            food.initiate_food(board)
 
 
 if __name__ == '__main__':

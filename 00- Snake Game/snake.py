@@ -20,7 +20,7 @@ class Snake:
             j -= 1
         elif head.direction == "right":
             j += 1
-        elif head.direction == "top":
+        elif head.direction == "up":
             i -= 1
         else:
             i += 1
@@ -29,11 +29,15 @@ class Snake:
             raise "index out of range"
         return i, j
 
+    def get_head_postion(self):
+        head = self.snake[0]
+        return (head.i, head.j)
+
     def extend(self):
         head_direction = ""
         if not self.snake:
             i = j = int(self.game_settings.board_size / 2)
-            head_direction = "left"
+            head_direction = self.game_settings.snake_initial_direction
         else:
             i, j = self.get_next_head_position()
             head_direction = self.snake[0].direction
@@ -54,3 +58,22 @@ class Snake:
         self.snake.pop()
         head = Body(self.game_settings, i, j, x, y, direction)
         self.snake.appendleft(head)
+
+    def set_direction(self, new_direction):
+        head = self.snake[0]
+        if new_direction in ["left", "right"]:
+            if head.direction in ["up", "down"]:
+                head.direction = new_direction
+        else:
+            if head.direction in ["left", "right"]:
+                head.direction = new_direction
+
+    def handle_key(self, key):
+        if key == pygame.K_LEFT:
+            self.set_direction("left")
+        elif key == pygame.K_RIGHT:
+            self.set_direction("right")
+        elif key == pygame.K_UP:
+            self.set_direction("up")
+        else:
+            self.set_direction("down")
