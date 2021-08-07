@@ -23,7 +23,6 @@ def main():
     pygame.display.flip()
 
     running = True
-    extended = False
     while running:
         pygame.time.wait(300)
         snake.move(screen)
@@ -41,7 +40,6 @@ def main():
         snake_head = snake.get_head_postion()
         if snake_head == food.current_location:
             snake.extend()
-            snake.draw(screen)
             food.initiate_food(board)
 
 

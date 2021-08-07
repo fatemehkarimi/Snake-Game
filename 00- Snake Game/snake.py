@@ -45,7 +45,7 @@ class Snake:
         x, y = self.board.get_square_position(i, j)
         width, height = self.game_settings.square_size
         body_piece = Body(self.game_settings, i, j, x, y, head_direction)
-        self.snake.appendleft(body_piece)
+        self.snake.append(body_piece)
 
     def draw(self, surface):
         for body in self.snake:
