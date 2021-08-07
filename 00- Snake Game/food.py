@@ -28,7 +28,9 @@ class Food:
         self.current_location = (i, j)
         return board.get_square_position(i, j)
 
-    def draw(self, surface, board):
+    def initiate_food(self, board):
         self.current_food = random.randint(0, len(self.food_icons) - 1)
-        position = self.next_location(board)
-        surface.blit(self.food_icons[self.current_food], position)
+        self.food_position = self.next_location(board)
+
+    def draw(self, surface):
+        surface.blit(self.food_icons[self.current_food], self.food_position)

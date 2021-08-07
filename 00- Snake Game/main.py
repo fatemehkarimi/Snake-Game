@@ -17,13 +17,19 @@ def main():
     snake = Snake(g_settings, board)
 
     board.draw(screen)
-    food.draw(screen, board)
+    food.initiate_food(board)
+    food.draw(screen)
     snake.draw(screen)
     pygame.display.flip()
 
     running = True
     while running:
-        pygame.time.wait(0)
+        pygame.time.wait(1000)
+        snake.move(screen)
+        board.draw(screen)
+        snake.draw(screen)
+        food.draw(screen)
+        pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False

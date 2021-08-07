@@ -24,6 +24,9 @@ class Snake:
             i -= 1
         else:
             i += 1
+
+        if i < 0 or j < 0 or i >= self.game_settings.board_size or j >= self.game_settings.board_size:
+            raise "index out of range"
         return i, j
 
     def extend(self):
@@ -43,3 +46,11 @@ class Snake:
     def draw(self, surface):
         for body in self.snake:
             body.draw(surface)
+
+    def move(self, surface):
+        direction = self.snake[0].direction
+        i, j = self.get_next_head_position()
+        x, y = self.board.get_square_position(i, j)
+        self.snake.pop()
+        head = Body(self.game_settings, i, j, x, y, direction)
+        self.snake.appendleft(head)

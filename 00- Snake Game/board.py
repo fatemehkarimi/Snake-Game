@@ -18,7 +18,6 @@ class Board:
                 s = pygame.rect.Rect((x, y, self.square_size[0], self.square_size[1]))
                 self.squares.append(s)
 
-
     def draw(self, surface):
         toggle = True
         for i in range(self.board_size):
@@ -34,3 +33,6 @@ class Board:
         return (
             self.squares[i * self.board_size + j].x,
             self.squares[i * self.board_size + j].y)
+
+    def draw_single_square(self, surface, i, j):
+        pygame.draw.rect(surface, (0, 0, 0), self.squares[i * self.board_size + j])
