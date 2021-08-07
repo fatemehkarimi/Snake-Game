@@ -14,19 +14,18 @@ class Snake:
 
     def get_next_head_position(self):
         head = self.snake[0]
+        board_size = self.game_settings.board_size
         i = head.i
         j = head.j
         if head.direction == "left":
-            j -= 1
+            j = (j + board_size - 1) % board_size
         elif head.direction == "right":
-            j += 1
+            j = (j + 1) % board_size
         elif head.direction == "up":
-            i -= 1
+            i = (i + board_size - 1) % board_size
         else:
-            i += 1
+            i = (i + 1) % board_size
 
-        if i < 0 or j < 0 or i >= self.game_settings.board_size or j >= self.game_settings.board_size:
-            raise "index out of range"
         return i, j
 
     def get_head_postion(self):
