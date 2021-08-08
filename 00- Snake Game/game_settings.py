@@ -1,5 +1,8 @@
 from direction import Directions
 class GameSettings:
+    # game settings
+    initial_time_quantom = 300
+    
     # Main window settings
     window_size = (1200, 900)
     window_top_margin = 75

@@ -23,19 +23,23 @@ def main():
     pygame.display.flip()
 
     running = True
+    time_quantom = g_settings.initial_time_quantom
     while running:
-        pygame.time.wait(300)
+        pygame.time.wait(time_quantom)
         snake.move(screen)
         board.draw(screen)
         snake.draw(screen)
         food.draw(screen)
         pygame.display.update()
+
+        arrow_keys_handled = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            elif event.type == pygame.KEYDOWN:
+            elif event.type == pygame.KEYDOWN and not arrow_keys_handled:
                 if event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT, pygame.K_DOWN]:
                     snake.handle_key(event.key)
+                    arrow_keys_handled = True
 
         snake_head = snake.get_head_postion()
         if snake_head == food.current_location:
