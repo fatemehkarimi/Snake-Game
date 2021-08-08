@@ -9,8 +9,12 @@ class Snake:
         self.board = board
         self.snake = deque()
 
-        for i in range(self.game_settings.snake_initial_length):
-            self.extend()
+        i = j = int(self.game_settings.board_size / 2)
+        for _ in range(self.game_settings.snake_initial_length):
+            x, y = board.get_square_position(i, j)
+            b = Body(game_settings, i, j, x, y, game_settings.snake_initial_direction)
+            self.snake.appendleft(b)
+            i, j = self.get_next_head_position()
 
     def get_next_head_position(self):
         head = self.snake[0]
@@ -34,13 +38,8 @@ class Snake:
 
     def extend(self):
         head_direction = ""
-        if not self.snake:
-            i = j = int(self.game_settings.board_size / 2)
-            head_direction = self.game_settings.snake_initial_direction
-        else:
-            i, j = self.get_next_head_position()
-            head_direction = self.snake[0].direction
-
+        i, j = self.get_next_head_position()
+        head_direction = self.snake[0].direction
         x, y = self.board.get_square_position(i, j)
         width, height = self.game_settings.square_size
         body_piece = Body(self.game_settings, i, j, x, y, head_direction)
