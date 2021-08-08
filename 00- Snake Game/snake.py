@@ -76,3 +76,10 @@ class Snake:
             self.set_direction(Directions.UP)
         else:
             self.set_direction(Directions.DOWN)
+
+    def snake_collide_with_self(self):
+        head = self.snake[0]
+        for i in range(1, len(self.snake)):
+            if head.i == self.snake[i].i and head.j == self.snake[i].j:
+                return True
+        return False

@@ -23,9 +23,17 @@ def main():
     pygame.display.flip()
 
     running = True
+    game_over = False
     time_quantom = g_settings.initial_time_quantom
+
     while running:
         pygame.time.wait(time_quantom)
+        if game_over:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+            continue
+
         snake.move(screen)
         board.draw(screen)
         snake.draw(screen)
@@ -45,6 +53,9 @@ def main():
         if snake_head == food.current_location:
             snake.extend()
             food.initiate_food(board)
+
+        if snake.snake_collide_with_self():
+            game_over = True
 
 
 if __name__ == '__main__':
