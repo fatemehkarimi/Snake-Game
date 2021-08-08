@@ -2,6 +2,7 @@ import queue
 import pygame
 from collections import deque
 from body import Body
+from direction import Directions
 
 class Snake:
     def __init__(self, game_settings, board):
@@ -21,11 +22,11 @@ class Snake:
         board_size = self.game_settings.board_size
         i = head.i
         j = head.j
-        if head.direction == "left":
+        if head.direction == Directions.LEFT:
             j = (j + board_size - 1) % board_size
-        elif head.direction == "right":
+        elif head.direction == Directions.RIGHT:
             j = (j + 1) % board_size
-        elif head.direction == "up":
+        elif head.direction == Directions.UP:
             i = (i + board_size - 1) % board_size
         else:
             i = (i + 1) % board_size
@@ -59,19 +60,19 @@ class Snake:
 
     def set_direction(self, new_direction):
         head = self.snake[0]
-        if new_direction in ["left", "right"]:
-            if head.direction in ["up", "down"]:
+        if new_direction in [Directions.LEFT, Directions.RIGHT]:
+            if head.direction in [Directions.UP, Directions.DOWN]:
                 head.direction = new_direction
         else:
-            if head.direction in ["left", "right"]:
+            if head.direction in [Directions.LEFT, Directions.RIGHT]:
                 head.direction = new_direction
 
     def handle_key(self, key):
         if key == pygame.K_LEFT:
-            self.set_direction("left")
+            self.set_direction(Directions.LEFT)
         elif key == pygame.K_RIGHT:
-            self.set_direction("right")
+            self.set_direction(Directions.RIGHT)
         elif key == pygame.K_UP:
-            self.set_direction("up")
+            self.set_direction(Directions.UP)
         else:
-            self.set_direction("down")
+            self.set_direction(Directions.DOWN)

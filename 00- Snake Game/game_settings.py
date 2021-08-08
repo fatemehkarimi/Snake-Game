@@ -1,3 +1,4 @@
+from direction import Directions
 class GameSettings:
     # Main window settings
     window_size = (1200, 900)
@@ -21,4 +22,4 @@ class GameSettings:
     snake_initial_length = min(int(board_size / 4), 4)
     snake_speed = 1
     snake_color = (46, 29, 15)
-    snake_initial_direction = "left"
+    snake_initial_direction = Directions.LEFT
