@@ -45,6 +45,11 @@ def main():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+                elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                    game_over = False
+                    screen.fill(g_settings.background_color)
+                    food.initiate_food(board)
+                    snake.initiate_snake()
             continue
 
         snake.move(screen)

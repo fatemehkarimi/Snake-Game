@@ -9,11 +9,15 @@ class Snake:
         self.game_settings = game_settings
         self.board = board
         self.snake = deque()
+        self.initiate_snake()
 
+    def initiate_snake(self):
+        self.snake.clear()
         i = j = int(self.game_settings.board_size / 2)
         for _ in range(self.game_settings.snake_initial_length):
-            x, y = board.get_square_position(i, j)
-            b = Body(game_settings, i, j, x, y, game_settings.snake_initial_direction)
+            x, y = self.board.get_square_position(i, j)
+            b = Body(self.game_settings, i, j, x, y,
+                        self.game_settings.snake_initial_direction)
             self.snake.appendleft(b)
             i, j = self.get_next_head_position()
 
