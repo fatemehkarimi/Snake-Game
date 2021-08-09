@@ -64,7 +64,7 @@ def main():
                     food.initiate_food(board)
                     snake.initiate_snake()
             continue
-        
+
         screen.fill(g_settings.background_color)
         snake.move(screen)
         board.draw(screen)
