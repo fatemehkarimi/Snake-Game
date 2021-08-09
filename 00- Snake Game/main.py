@@ -4,7 +4,20 @@ from board import Board
 from food import Food
 from snake import Snake
 
+def show_game_over_message(surface, game_settings):
+    window_width = game_settings.window_size[0]
+    window_height = game_settings.window_size[1]
+
+    font = pygame.font.SysFont('monospace', window_width // 50)
+    message = font.render('Game Over! press space to restart the game.', True,
+                    game_settings.message_color)
+    message_rect = message.get_rect(center=(window_width // 2, int(window_height * 0.95)))
+    surface.blit(message, message_rect)
+    pygame.display.update()
+
+
 def main():
+    pygame.init()
     g_settings = GameSettings()
     screen = pygame.display.set_mode(g_settings.window_size)
     screen.fill(g_settings.background_color)
@@ -56,6 +69,7 @@ def main():
 
         if snake.snake_collide_with_self():
             game_over = True
+            show_game_over_message(screen, g_settings)
 
 
 if __name__ == '__main__':

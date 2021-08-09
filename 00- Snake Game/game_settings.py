@@ -2,7 +2,8 @@ from direction import Directions
 class GameSettings:
     # game settings
     initial_time_quantom = 300
-    
+    message_color = (247, 233, 141)
+
     # Main window settings
     window_size = (1200, 900)
     window_top_margin = 75
