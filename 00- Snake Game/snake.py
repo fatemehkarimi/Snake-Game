@@ -1,4 +1,3 @@
-import queue
 import pygame
 from collections import deque
 from body import Body

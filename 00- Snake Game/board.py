@@ -1,5 +1,4 @@
 import pygame
-from game_settings import GameSettings
 
 class Board:
     def __init__(self, game_settings):

@@ -1,4 +1,3 @@
-from game_settings import GameSettings
 import pygame
 import random
 

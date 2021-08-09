@@ -3,6 +3,7 @@ class GameSettings:
     # game settings
     initial_time_quantom = 300
     message_color = (247, 233, 141)
+    feed_score = 5
 
     # Main window settings
     window_size = (1200, 900)
