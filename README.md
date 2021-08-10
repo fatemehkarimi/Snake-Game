@@ -1,2 +1,13 @@
-# Tiny Projects For Tiny Children
-In order to improve my software design skills, I decided to do as many tiny projects as I can. The name of the project repository is adapted from "good stories for good children" a book by [Mehdi Azar Yazdi](https://en.wikipedia.org/wiki/Mehdi_Azar_Yazdi)
+# Snake Game with Python3 and Pygame
+## Screenshots
+![Snake Game](screenshots/game.png)
+
+## How to Run
+First, make sure you have pygame installed on your computer. then, you can run the game by  `python main.py`
+
+
+You can also use **pipenv** to install dependecies:
+
+    pipenv shell
+    pipenv sync
+    python main.py
